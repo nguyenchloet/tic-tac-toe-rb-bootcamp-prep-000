@@ -98,14 +98,13 @@ end
 def turn(board)
   puts "Please enter 1-9:"
   user_input = gets.strip
-  position = input_to_index(user_input)
-until valid_move?(board, position) == true
-  puts "Please enter 1-9:"
-  user_input = gets.strip
-  position = input_to_index(user_input)
-  turn(board)
-end
-display_board(board)
+  index = inputß_to_index(user_input)
+  if valid_move?(board, index)
+    move(board, index, current_player(board))
+    display_board(board)
+  else
+    turn(board)
+  end
 end
 
 def play(board)
